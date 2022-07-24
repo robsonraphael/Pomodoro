@@ -1,21 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-/* StyledComponents */
-import { Container, CountingTime } from "./styled";
+/* Styled Components */
+import { Container, Wrap, Counter, Button } from "./styled";
 
-interface PropsText{
-  color: string;
-  text: number;
-}
+export const Timer = () => {
+  const [seconds, setSeconds] = useState(0);
+  const [min, setMin] = useState(24)
+  const [isActive, setIsActive] = useState(false);
 
-const Timer = (props : PropsText) => {
+  useEffect(() => {
+    /* Counter */
+    let interval = setInterval(() => {
+      clearInterval(interval);
+
+      if(seconds === 0){
+        if(min !== 0) {
+          setSeconds(59)
+          setMin(min - 1);
+
+          // Break
+        } else {
+          let min = isActive ? 24 : 4;
+          let seconds = 59;
+
+          setSeconds(seconds)
+          setMin(min)
+          setIsActive(!isActive)
+        }
+      } else {
+        setSeconds(seconds - 1)
+      }
+    }, 1000)
+  }, [seconds])
+
+  let timerSeconds = seconds < 10 ? `0${seconds}` : seconds
   return (
-    <Container>
-      <CountingTime color={props.color}>
-        <h1>{props.text}</h1>
-      </CountingTime>
-    </Container>
-  )
+    <>
+      <Container>
+        <Wrap>
+          <Counter>
+            {min}:{timerSeconds}
+          </Counter>
+          <Button>Start</Button>
+        </Wrap>
+      </Container>
+    </>
+  );
 };
-
-export default Timer;
