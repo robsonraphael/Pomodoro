@@ -16,5 +16,5 @@ export const Container = styled.main`
   align-items: center;
   justify-content: center;
 
-  background: rgb(251, 178, 74);
+  background: ${props => props.theme.colors.background};
 `;
