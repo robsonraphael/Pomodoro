@@ -7,10 +7,16 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 50px;
 
   border-radius: 50%;
-  background-color: rgb(235, 66, 47);
+  background-color: ${(props) => props.theme.colors.primary};
   box-shadow: 1px 2px 2px 1px rgb(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    width: 300px;
+    height: 300px;
+  }
 `;
 export const Wrap = styled.div`
   display: flex;
@@ -18,29 +24,42 @@ export const Wrap = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 1em;
+
+  @media (max-width: 768px) {
+    gap: 1.5em;
+  }
 `;
 export const Counter = styled.span`
   font-size: 6em;
   font-weight: bolder;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
+
+  @media (max-width: 768px) {
+    font-size: 5em;
+  }
 `;
 export const Button = styled.button`
-  width: 120px;
-  height: 50px;
+  width: 140px;
+  height: 60px;
 
   border-radius: 5px;
   border: none;
-  background-color: rgb(54, 51, 52);
   box-shadow: 0.5px 0.5px 0.5px 0.5px rgb(0, 0, 0, 0.2);
+  background-color: ${(props) => props.theme.colors.secondary};
 
-  font-size: 1.5em;
+  font-size: 1.7em;
   font-weight: bolder;
-  color: white;
+  color: ${(props) => props.theme.colors.text};
   cursor: pointer;
 
   transition: ease 0.25s;
 
   &:hover {
-    background-color: rgb(84, 81, 82);
+    background-color: ${(props) => props.theme.colors.focus};
+  }
+  @media (max-width: 768px) {
+    width: 130px;
+    height: 50px;
+    font-size: 1.5em;
   }
 `;
