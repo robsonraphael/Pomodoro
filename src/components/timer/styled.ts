@@ -12,7 +12,7 @@ export const Container = styled.div`
   border-radius: 50%;
   background-color: ${(props) => props.theme.colors.primary};
   box-shadow: 1px 2px 2px 1px rgb(0, 0, 0, 0.2);
-
+  margin: 2em auto;
   @media (max-width: 768px) {
     width: 300px;
     height: 300px;
@@ -55,7 +55,8 @@ export const Button = styled.button`
   transition: ease 0.25s;
 
   &:hover {
-    background-color: ${(props) => props.theme.colors.focus};
+    background-color: ${(props) => props.theme.colors.hover};
+    color: white;
   }
   @media (max-width: 768px) {
     width: 130px;

@@ -1,7 +1,7 @@
-import React, { JSXElementConstructor, useState } from "react";
+import { useState } from "react";
 
 /* Components */
-import { Settings } from "../settings";
+import { Settings } from "../profile";
 
 /* Styled Components */
 import { Container, Wrap, Counter, Button } from "./styled";
@@ -50,7 +50,8 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
             {timeState ? "Pause" : "Start"}
           </Button>
         </Wrap>
-        <Settings
+      </Container>
+      <Settings
           DefaultClick={() => {
             let input = Number(
               (document.getElementById("pomodoro") as HTMLInputElement).value
@@ -76,7 +77,6 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
           }}
           isLong={isLong}
         />
-      </Container>
     </>
   );
 };
