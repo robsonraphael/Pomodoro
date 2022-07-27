@@ -4,9 +4,6 @@ export const Container = styled.header`
   width: 100%;
   height: 5em;
 
-  position: absolute;
-  top: 0;
-
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -34,23 +31,24 @@ export const Settings = styled.button`
     }
   }
 `;
-export const Menu = styled.div<{ display: boolean }>`
-  width: 40vw;
-  height: 75vh;
+export const Menu = styled.div<{ active: boolean}>`
+  width: 31em;
+  height: 31em;
 
-  display: ${(props) => (props.display ? "flex" : "none")};
+  display: ${(props) => (props.active ? "flex" : "none")};
   flex-direction: column;
   align-items: center;
+  gap: 0.2em;
 
   background-color: ${(props) => props.theme.colors.focus};
   box-shadow: 1px 1px 2px 1.5px rgba(0, 0, 0, 0.2);
   border-radius: 7px;
 
   position: absolute;
-  left: 30vw;
-  top: 40%;
-  right: auto;
+  top: 15%;
+  left: 30%;
   animation: opacity;
+  z-index: 999;
 
   @keyframes opacity {
     from {
@@ -62,10 +60,14 @@ export const Menu = styled.div<{ display: boolean }>`
     }
   }
 
-  @media (max-width: 768px){
-    width: 70vw;
-    left: 15vw;
-    top: 50%;
+  @media (max-width: 768px) {
+    width: 25em;
+    height: 25em;
+    left: calc(20% + 1vw);
+  }
+
+  @media (max-width: 500px){
+    left: calc(5% + 1vw);
   }
 `;
 export const Title = styled.h2<{ size: string }>`
@@ -80,26 +82,24 @@ export const Wrap = styled.div`
   gap: 0.2em;
 `;
 export const Label = styled.label`
-  font-size: 1.1em;
+  font-size: 0.9em;
   font-family: "Roboto";
   color: ${(props) => props.theme.colors.text};
+  text-align: center;
 `;
 export const Time = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: space-around;
   padding: 5px;
-
   width: 90%;
-  height: 80%;
 `;
 export const Pomodoro = styled.input.attrs({
   type: "number",
   max: "60",
   id: "pomodoro",
 })`
-  width: 120px;
+  width: 80px;
   height: 40px;
 
   outline: none;
@@ -108,7 +108,6 @@ export const Pomodoro = styled.input.attrs({
   border-radius: 5px;
   padding: 5px;
   font-size: 1.1em;
-
 `;
 export const ShortBreak = styled(Pomodoro).attrs({
   id: "shortBreak",
