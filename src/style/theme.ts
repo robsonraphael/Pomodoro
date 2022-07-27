@@ -4,6 +4,7 @@ interface ThemeProps {
     primary: string;
     secondary: string;
     focus: string;
+    hover: string;
     text: string;
   };
 }
@@ -12,28 +13,31 @@ export const DefaultTheme: ThemeProps = {
   colors: {
     background: "rgb(251, 178, 74)",
     primary: "rgb(235, 66, 45)",
-    secondary: "rgb(84, 81, 82)",
-    focus: "rgb(240, 20, 40)",
+    secondary: "rgb(107, 59, 52)",
+    focus: "rgb(186, 131, 54)",
+    hover: "rgb(82, 46, 40)",
     text: "rgb(240, 240, 240)",
   },
 };
 
 export const ShortTheme: ThemeProps = {
   colors: {
-    background: "rgb(91, 21, 140)",
+    background: "rgb(155, 25, 230)",
     primary: "rgb(217, 34, 157)",
-    secondary: "rgb(20, 204, 203)",
-    focus: "rgb(200, 40, 200)",
+    secondary: "rgb(140, 11, 97)",
+    focus: "rgb(112, 18, 166)",
+    hover: "rgb(115, 9, 80)",
     text: "rgb(255, 255, 255)",
   },
 };
 
 export const LongTheme: ThemeProps = {
   colors: {
-    background: "rgb(30, 190, 100)",
+    background: "rgb(7, 179, 122)",
     primary: "rgb(255, 100, 60)",
-    secondary: "rgb(255, 255, 50)",
-    focus: "rgb(230, 90, 30)",
-    text: "rgb(10, 10, 10)",
+    secondary: "rgb(128, 81, 69)",
+    focus: "rgb(5, 115, 78)",
+    hover: "rgb(102, 64, 55)",
+    text: "rgb(250, 250, 250)",
   },
 };
