@@ -4,10 +4,10 @@ Um Pomodoro Timer ultilizado para o gerenciamento de tempo e auxiliar no control
 ## Preview
 
 ### Desktop
-![pomodoroScreenShotDesktop](./public/screenShotDesktop.png)
+![pomodoroScreenShotDesktop](./public/pomogif.gif)
 
 ### Mobile
-![pomodoroScreenShotMobile](./public/screenShotMobile.png)
+![pomodoroScreenShotMobile](./public/screenShot.png)
 
 ## License
 [MIT License](./LICENSE)
