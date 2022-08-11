@@ -1,12 +1,14 @@
 import { createGlobalStyle } from "styled-components";
 
-export const Global = createGlobalStyle<{
+interface GlobalProps {
   theme: {
     colors: {
       background: string;
     }
   }
-}>`
+}
+
+export const Global = createGlobalStyle<GlobalProps>`
     * {
         margin: 0;
         padding: 0;

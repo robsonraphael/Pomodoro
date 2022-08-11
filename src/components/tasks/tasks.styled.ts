@@ -56,8 +56,9 @@ export const Menu = styled.div<{ active: boolean }>`
   justify-content: center;
 
   position: absolute;
-  left: 45%;
-  top: 45%;
+  left: 60%;
+  top: 50%;
+  z-index: 2;
 
   width: 200px;
   height: fit-content;
@@ -108,4 +109,4 @@ export const Add = styled.button`
   }
 
 `;
-export const ViewTasks = styled.div.attrs({id: 'tasks'})``;
+export const ViewTasks = styled.div.attrs({id: 'viewTasks'})``;

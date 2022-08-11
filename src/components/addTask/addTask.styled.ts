@@ -1,10 +1,22 @@
 import styled from "styled-components";
 
+interface WrapProps {
+  margin?: string;
+  padding?: string;
+  height?: string;
+  background?: string;
+  radius?: string;
+  display?: string;
+  align?: string;
+  justify?: string;
+  gap?: string;
+}
+
 export const Container = styled.div<{ active: boolean }>`
-  display: ${props => props.active ? "flex" : "none"};
+  display: ${(props) => (props.active ? "flex" : "none")};
   background-color: rgb(255, 255, 255);
   width: 30em;
-  height: 16em;
+  height: fit-content;
   padding: 5px;
 
   border-radius: 10px;
@@ -12,25 +24,8 @@ export const Container = styled.div<{ active: boolean }>`
 
   flex-direction: column;
 `;
-export const Wrap = styled.div`
-  padding: 5px 20px;
-  span {
-    margin-top: 5px;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    width: 195px;
-  }
-`;
-export const Title = styled.div`
-  font-size: 1em;
-  font-family: "Roboto";
-  font-weight: 550;
-  color: rgb(60, 60, 60);
-`;
-export const Input = styled.input.attrs({
-  placeholder: "What are you working on ?",
-})`
+
+export const TitleTask = styled.input`
   font-family: "Roboto";
   background-color: none;
   border: none;
@@ -49,11 +44,28 @@ export const Input = styled.input.attrs({
     letter-spacing: 0.2px;
   }
 `;
+
+export const Wrap = styled.div<WrapProps>`
+  margin: ${(props) => props.margin};
+  padding: ${(props) => props.padding};
+  height: ${(props) => props.height};
+  background: ${(props) => props.background};
+  display: ${(props) => props.display};
+  align-items: ${(props) => props.align};
+  gap: ${(props) => props.gap};
+  justify-content: ${(props) => props.justify};
+  border-radius: ${(props) => props.radius};
+`;
+
+export const Title = styled.h3`
+  font-size: 1em;
+  font-family: "Roboto";
+  font-weight: 550;
+  color: rgb(60, 60, 60);
+`;
+
 export const Number = styled.input.attrs({
   type: "number",
-  id: "pomo",
-  min: 1,
-  max: 10,
 })`
   font-size: 1.3em;
   font-family: "Roboto";
@@ -67,6 +79,7 @@ export const Number = styled.input.attrs({
   outline: none;
   box-shadow: 1px 1px 1px 1px rgb(0, 0, 0, 0.2);
 `;
+
 export const Up = styled.button`
   display: flex;
   align-items: center;
@@ -87,7 +100,8 @@ export const Up = styled.button`
   }
 `;
 export const Down = styled(Up)``;
-export const Link = styled.button`
+
+export const AddNote = styled.button`
   font-size: 0.9em;
   padding: 2px;
   background: none;
@@ -109,7 +123,10 @@ export const Save = styled.button`
   transition: ease-in 0.25s;
 
   &:hover {
-    background: rgb(180, 180, 180)
+    background: rgb(180, 180, 180);
+  }
+  &:active {
+    background-color: rgb(220, 220, 220);
   }
 `;
 export const Cancel = styled(Save)`
@@ -121,20 +138,19 @@ export const Cancel = styled(Save)`
     background: rgb(219, 219, 219);
   }
 `;
-export const Wrapper = styled.div`
-  margin-top: 5px;
-  padding-left: 20px;
-  height: 30px;
-  display: flex;
+export const Notes = styled.div<{ active: boolean }>`
+  display: ${(props) => (props.active ? "flex" : "none")};
+  padding: 10px 20px;
 `;
-export const Bottom = styled.div`
-  background: rgba(239, 239, 239);
-  margin-top: 10px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 1em;
-  padding: 0px 30px;
-  border-radius: 10px;
+
+export const Note = styled.textarea.attrs({
+  rows: 4.5,
+  cols: 45
+})`
+  font-size: 1em;
+  padding: 5px;
+  font-family: "Roboto";
+  outline: none;
+  letter-spacing: 0.5px;
+  border-radius: 5px;
 `;

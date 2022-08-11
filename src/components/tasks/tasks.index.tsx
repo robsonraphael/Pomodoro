@@ -1,14 +1,8 @@
-import React, { useState } from "react";
-
-/* Components */
-import { Task } from "../task";
-import { AddTasks} from "../addTask";
-
-/* Icons */
+import { useState} from "react";
+import { AddTasks } from "../addTask/addTask.index";
 import { MdMoreVert } from "react-icons/md";
 import { BsTrash, BsPlusCircleFill } from "react-icons/bs";
 
-/* Styled Components */
 import {
   Container,
   Wrap,
@@ -18,12 +12,17 @@ import {
   Option,
   ViewTasks,
   Add,
-} from "./styled";
+} from "./tasks.styled";
 
 export const Tasks = () => {
+  // Estado da configuração da tarefa
   const [settingsIsOpen, setSettingsIsOpen] = useState(true);
-  const [addTasksIsOpen, setAddTasksIsOpen] = useState(false);
+  // Visibilidade 
+  const [display, setDisplay] = useState(false);
+  // Lista de Tarefas
+  const [tasks, setTasks] = useState([]);
 
+  // Função que muda o estado das configurações
   const openSettings = () => {
     const span = document.getElementById("more") as HTMLElement;
     span.style.transition = "ease-in-out 0.35s";
@@ -36,9 +35,10 @@ export const Tasks = () => {
     }
   };
 
+  // Função que muda o estado do Adicionar Tarefas
   const addTasks = () => {
-    setAddTasksIsOpen(!addTasksIsOpen);
-  }
+    setDisplay(!display);
+  };
 
   return (
     <Container>
@@ -54,12 +54,17 @@ export const Tasks = () => {
           Clear all tasks
         </Option>
       </Menu>
-      <ViewTasks />
+      <ViewTasks>
+        {tasks.map((item, index) => (<div>{item}</div>))}
+      </ViewTasks>
       <Add onClick={() => addTasks()}>
         <BsPlusCircleFill size="1.1em" />
         Add Task
       </Add>
-      <AddTasks active={addTasksIsOpen} cancelClick={() => setAddTasksIsOpen(!addTasksIsOpen)}/>
+      <AddTasks
+        active={display}
+        cancelClick={() => setDisplay(!display)}
+      />
     </Container>
   );
 };

@@ -31,7 +31,7 @@ export const Settings = styled.button`
     }
   }
 `;
-export const Menu = styled.div<{ active: boolean}>`
+export const Menu = styled.div<{ active: boolean }>`
   width: 31em;
   height: 31em;
 
@@ -66,7 +66,7 @@ export const Menu = styled.div<{ active: boolean}>`
     left: calc(20% + 1vw);
   }
 
-  @media (max-width: 500px){
+  @media (max-width: 500px) {
     left: calc(5% + 1vw);
   }
 `;

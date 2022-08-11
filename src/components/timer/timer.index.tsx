@@ -1,19 +1,17 @@
 import { useState } from "react";
-
-/* Components */
-import { Settings } from "../profile";
-
-/* Styled Components */
-import { Container, Wrap, Counter, Button } from "./styled";
+import { Container, Circle, Wrap, Display, Button } from "./timer.styled";
+import { Breaks } from "../breaks/breaks.index";
+import { Tasks } from "../tasks/tasks.index";
 
 export const Timer = ({ isDefault, isShort, isLong }: any) => {
-  /* Seconds Timer */
+  // Estado dos segundos
   const [sec, setSec] = useState(0);
-  /* Minutes Timer */
+  // Estado dos minutos
   const [min, setMin] = useState(25);
-  /* State Timer */
+  // Estado do contador
   const [timeState, setTimeState] = useState(false);
 
+  // Função que inicia o contador
   const startTimer = setInterval(() => {
     clearInterval(startTimer);
     if (timeState === true) {
@@ -22,8 +20,8 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
           setSec(59);
           setMin(min - 1);
         } else {
-          let minutes = 5;
-          let seconds = 59;
+          let minutes: number = 5;
+          let seconds: number = 59;
 
           setSec(seconds);
           setMin(minutes - 1);
@@ -37,23 +35,25 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
     }
   }, 1000);
 
-  const timerSeconds = sec < 10 ? `0${sec}` : sec;
-  const timerMinutes = min < 10 ? `0${min}` : min;
+  const timerSeconds: number | string = sec < 10 ? `0${sec}` : sec;
+  const timerMinutes: number | string = min < 10 ? `0${min}` : min;
+
   return (
     <>
       <Container>
-        <Wrap>
-          <Counter>
-            {timerMinutes}:{timerSeconds}
-          </Counter>
-          <Button onClick={() => setTimeState(!timeState)}>
-            {timeState ? "Pause" : "Start"}
-          </Button>
-        </Wrap>
-      </Container>
-      <Settings
+        <Circle>
+          <Wrap>
+            <Display>
+              {timerMinutes}:{timerSeconds}
+            </Display>
+            <Button onClick={() => setTimeState(!timeState)}>
+              {timeState ? "Pause" : "Start"}
+            </Button>
+          </Wrap>
+        </Circle>
+        <Breaks
           DefaultClick={() => {
-            let input = Number(
+            let input = parseInt(
               (document.getElementById("pomodoro") as HTMLInputElement).value
             );
             setMin(input || 25);
@@ -61,7 +61,7 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
           }}
           isDefault={isDefault}
           ShortClick={() => {
-            let input = Number(
+            let input = parseInt(
               (document.getElementById("shortBreak") as HTMLInputElement).value
             );
             setMin(input || 5);
@@ -69,7 +69,7 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
           }}
           isShort={isShort}
           LongClick={() => {
-            let input = Number(
+            let input = parseInt(
               (document.getElementById("longBreak") as HTMLInputElement).value
             );
             setMin(input || 10);
@@ -77,6 +77,8 @@ export const Timer = ({ isDefault, isShort, isLong }: any) => {
           }}
           isLong={isLong}
         />
+        <Tasks />
+      </Container>
     </>
   );
 };

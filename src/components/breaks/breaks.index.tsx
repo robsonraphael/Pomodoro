@@ -1,7 +1,6 @@
-/* Styled Components */
-import { Container, Options } from "./styled";
+import { Container, Options } from "./breaks.styled";
 
-export const Settings = ({
+export const Breaks = ({
   DefaultClick,
   isDefault,
   ShortClick,

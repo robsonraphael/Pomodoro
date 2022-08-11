@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.main``;
+export const Circle = styled.div`
   width: 350px;
   height: 350px;
 
@@ -29,7 +30,7 @@ export const Wrap = styled.div`
     gap: 1.5em;
   }
 `;
-export const Counter = styled.span`
+export const Display = styled.span`
   font-size: 6em;
   font-weight: bolder;
   color: ${(props) => props.theme.colors.text};
